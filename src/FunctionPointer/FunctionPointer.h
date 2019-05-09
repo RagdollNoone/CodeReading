@@ -7,11 +7,14 @@
 class FunctionPointer {
 
 public:
-    static char *inet_ntoa(int, int, int, int);
     static void print();
-
-    static int cmpstringp(const void *, const void *);
     static int howToUseQsort(int, char *[]);
+    static void howToUseStrlen();
+
+private:
+    static char *inet_ntoa(int, int, int, int);
+    static int cmpstringp(const void *, const void *);
+    static size_t strlen(const char *);
 };
 
 

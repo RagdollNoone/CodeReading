@@ -4,7 +4,47 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
+#include <iostream>
 #include "FunctionPointer.h"
+
+using namespace std;
+
+size_t FunctionPointer::strlen(const char *str) {
+    const char *s;
+
+//    int myNull = 0;
+
+    // 不能用s比较, 关心的问题是NULL和\0有什么区别
+    // 因为字符串常量末尾插入的是\0
+//    printf("s == NULL: %s\n", str == NULL);
+//    printf("s == 0: %s\n", str == 0);
+//    printf("s == myNull: %s", str == myNull); // 编译错误
+
+    // 下面这句话表达的是不停的向后移动字符串的首地址
+    for (s = str; *s; ++s) {
+//        printf("just for break\n");
+    }
+
+    return (s - str);
+}
+
+void FunctionPointer::howToUseStrlen() {
+    char array[10] = "";
+    cout << "char array length is: " << FunctionPointer::strlen(array) << endl;
+    array[0] = 'L';
+    for (int i = 0; i < sizeof(array) / sizeof(array[0]); i++) {
+        cout << array[i];
+    }
+    cout << endl;
+
+    char *s = "Hello World";
+    char s_array[12] = "Hello World";
+    cout << "s length is: " << FunctionPointer::strlen(s) << endl;
+//    s = &s_array[0];
+    s[0] = 'L'; // 越权处理字符串常量, 这东西写保护, 程序异常退出, 打开上面这句注释就可以修改了
+    cout << "Use cout print s: " << s << endl;
+    printf("Use printf print s: %s\n", s);
+}
 
 int FunctionPointer::cmpstringp(const void *p1, const void *p2) {
     /*
@@ -25,6 +65,7 @@ int FunctionPointer::howToUseQsort(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
+    // 第二个参数表示参与排序的元素的个数
     qsort(&argv[1], argc - 1, sizeof(char *), cmpstringp);
 
     for (j = 1; j < argc; j++)
