@@ -16,6 +16,8 @@ int main(int argc, char *argv[]) {
     point->drawFun(point);
     point3d->drawFun(point3d);
 
+    delete_point(point);
+
     return 0;
 }
 

@@ -18,7 +18,7 @@ struct Point3D{
 typedef Point3D point3d;
 
 point *new_point3d();
-void delete_point3d(point3d * const);
+void delete_point3d(point3d * const); // TODO： 析构有问题, 到底应该设计什么类型的参数才对
 
 void drawPoint3dFun(const point *const pPointObj);
 
